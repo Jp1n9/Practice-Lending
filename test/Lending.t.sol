@@ -51,6 +51,20 @@ contract CounterTest is Test {
         vm.stopPrank();
 
     }
+    function testDepositUSDC2() public {
+        usdc.mint(depositor1,200 * 10 ** 6);
+
+        vm.startPrank(depositor1);
+        usdc.approve(address(lending),100 * 10 **6);
+        lending.deposit(address(usdc),100 * 10 **6);
+
+        usdc.approve(address(lending),100 * 10 **6);
+        lending.deposit(address(usdc),100 * 10 **6);
+
+        assertEq(usdc.balanceOf(address(lending)), 200 * 10 ** 6, "Error USDC deposit");
+        vm.stopPrank();
+
+    }
 
     function testDepositCollateral1() public {
         vm.deal(borrower1,10 ether);
@@ -60,10 +74,21 @@ contract CounterTest is Test {
         assertEq(address(lending).balance , 10 ether,"Error Ether deposit");
     }
 
+    function testDepositCollateral2() public {
+        vm.deal(borrower1,20 ether);
+        vm.prank(borrower1);
+        lending.deposit{value : 10 ether}(address(0),0);
+
+        vm.startPrank(borrower1);
+        lending.deposit{value : 5 ether}(address(0),0);
+        
+        assertEq(lending.getBorrowedAmount(),10500000000, "borrowable amount is not correct");
+        assertEq(lending.getCollateral(),15 ether,"collateral is not correct");
+        vm.stopPrank();
+    }
     function testBorrow1() public {
         uint256 amount = 10 ether;
         usdc.mint(depositor1,7000 * 10 ** 6);
-
 
         // deposit
         vm.startPrank(depositor1);
@@ -409,7 +434,7 @@ contract CounterTest is Test {
         usdc.approve(address(lending),7000 * 10 ** 6);
         vm.warp(block.timestamp + 5 days);
         //이더의 가치가50%이하로 떨어지면 45% 까지 청산시켜주는 사람에게  바로 청산
-        lending.liquidate(borrower1, address(usdc),2000 * 10 **6);
+        lending.liquidate(borrower1, address(usdc),4000 * 10 **6);
         assertEq(liquidator1.balance, 5.25 ether);
         vm.stopPrank();
 

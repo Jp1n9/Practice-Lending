@@ -40,7 +40,6 @@ contract Lending {
     mapping(address => sCollateral) public  borrowers;
     mapping(address => sDeposit) public depositors;
 
-    address[] public  borrowerAddressList;
 
     event DepositUSDC(address from , uint256 amount);
     event DepositETHER(address from , uint256 amount);
@@ -60,17 +59,27 @@ contract Lending {
         // Collateral
         if(msg.value > 0)  {
             uint256 ethToUsdc = msg.value * _oracle.getPrice(_ether) / 10 ** 18;
-
-            sCollateral memory collateral=  sCollateral({
+            sCollateral memory collateral;
+            if(borrowers[msg.sender].ethAmount == 0 ) {
+                collateral=  sCollateral({
                 ethAmount : msg.value,
                 time : 0,
                 borrowableAmount : ethToUsdc * _ltv / _BASE_POINT,
                 thresholdAmount : ethToUsdc * _threshold / _BASE_POINT,
                 limitThresholdAmount : ethToUsdc * _ltv / _BASE_POINT,
                 borrowedAmount : 0
-            });
-
+                });
+                
+            }
+            else {
+                collateral = borrowers[msg.sender];
+                collateral.ethAmount += msg.value;
+                collateral.borrowableAmount += ethToUsdc * _ltv / _BASE_POINT;
+                collateral.thresholdAmount += ethToUsdc * _threshold / _BASE_POINT;
+                collateral.limitThresholdAmount += ethToUsdc * _ltv / _BASE_POINT;
+            }
             borrowers[msg.sender] = collateral;
+
 
             emit DepositETHER(msg.sender, msg.value);
             emit BorrowerInfo(msg.sender, borrowers[msg.sender].ethAmount, borrowers[msg.sender].time,borrowers[msg.sender].borrowableAmount, borrowers[msg.sender].thresholdAmount,borrowers[msg.sender].borrowedAmount);
@@ -78,10 +87,18 @@ contract Lending {
         // USDC
         else if(tokenAddress == _token){
             require(amount > 0 , "Amount must be greater than 0 ");
-            sDeposit memory deposit = sDeposit( {
-                usdcAmount : amount,
-                time : block.timestamp
-            });
+            sDeposit memory deposit;
+            if(depositors[msg.sender].usdcAmount == 0){
+                deposit = sDeposit( {
+                    usdcAmount : amount,
+                    time : block.timestamp
+                });
+            }
+            else {
+                deposit = depositors[msg.sender];
+                deposit.usdcAmount += amount;
+            }
+
 
             depositors[msg.sender] = deposit;
             IERC20(tokenAddress).safeTransferFrom(msg.sender,address(this),amount);
@@ -103,7 +120,6 @@ contract Lending {
        collateral.borrowableAmount -= amount; 
        collateral.time = block.timestamp;
        borrowers[msg.sender] = collateral;
-       borrowerAddressList.push(msg.sender);
        IERC20(tokenAddress).safeTransfer(msg.sender,amount);
     
         emit BorrowerInfo(msg.sender, borrowers[msg.sender].ethAmount, borrowers[msg.sender].time,borrowers[msg.sender].borrowableAmount, borrowers[msg.sender].thresholdAmount,borrowers[msg.sender].borrowedAmount);
@@ -119,7 +135,6 @@ contract Lending {
       uint256 borrowedPeriod = (block.timestamp - collateral.time) / 1 days; // 빌린 기간
 
       uint256 currentBorrowedAmount = calcInterest(collateral.borrowedAmount,borrowedPeriod);
-      console.log("current" ,currentBorrowedAmount);
       uint256 fee = calcInterest(collateral.borrowedAmount,borrowedPeriod) - collateral.borrowedAmount; // 수수료 
       uint256 originAmount = amount - fee;
       // 빌린 금액 보다 적은 금액을 상환 했을 때
@@ -249,5 +264,13 @@ contract Lending {
     function calcInterest(uint256 amount ,uint256 n) private returns(uint256) {
         return (amount* 1001 ** n ) / (1000 ** n);
      }
+
+
+    function getBorrowedAmount() public view returns(uint256 amount) {
+        amount = borrowers[msg.sender].borrowableAmount;
+    }
+    function getCollateral() public view returns(uint256 amount) {
+        amount = borrowers[msg.sender].ethAmount;
+    }
 
 }
