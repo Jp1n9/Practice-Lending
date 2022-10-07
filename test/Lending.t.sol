@@ -433,10 +433,45 @@ contract CounterTest is Test {
         // vm.warp(block.timestamp + 5 days);///
         usdc.approve(address(lending),7000 * 10 ** 6);
         vm.warp(block.timestamp + 5 days);
-        //이더의 가치가50%이하로 떨어지면 45% 까지 청산시켜주는 사람에게  바로 청산
-        lending.liquidate(borrower1, address(usdc),4000 * 10 **6);
+        lending.liquidate(borrower1, address(usdc),2000 * 10 **6);
         assertEq(liquidator1.balance, 5.25 ether);
         vm.stopPrank();
-
     }
+
+    function testLiquidate5() public {
+        // 35070070 5일 복리
+        usdc.mint(depositor1,7000 * 10 ** 6);
+        vm.deal(borrower1,190 ether);
+        usdc.mint(borrower1,35070070);
+
+        // deposit
+        vm.startPrank(depositor1);
+        usdc.approve(address(lending),7000 * 10 **6);
+        lending.deposit(address(usdc),7000 *10 **6);
+        vm.stopPrank();
+
+        // borrow
+        vm.startPrank(borrower1);
+        usdc.approve(address(lending),100 * 10 **6);
+        lending.deposit{value : 10 ether }(address(0),0);
+        lending.borrow(address(usdc), 7000 *10 **6 ); 
+        vm.stopPrank();
+
+        address liquidator1 = address(0x90);
+        usdc.mint(liquidator1,7000 * 10 ** 6);
+
+        oracle.setPrice(eth,700* 10 ** 6);
+        uint256 getPrice = oracle.getPrice(eth);
+        vm.prank(borrower1);
+        // 추가 예치
+        lending.deposit{value : 150 ether }(address(0),0);
+
+        vm.startPrank(liquidator1);
+        // vm.warp(block.timestamp + 5 days);///
+        usdc.approve(address(lending),10000 * 10 ** 6);
+        vm.expectRevert('The price has not been reached');
+        lending.liquidate(borrower1, address(usdc),10000 * 10 **6);
+        vm.stopPrank();
+    }
+
 }

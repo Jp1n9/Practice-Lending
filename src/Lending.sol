@@ -187,9 +187,7 @@ contract Lending {
             delete borrowers[msg.sender];
 
             // send Ether
-            (bool success,) = payable(msg.sender).call{
-                value : balance
-            }(""); 
+            bool success = payable(msg.sender).send(balance);
             require(success,"Failed to send ether");  
             emit BorrowerInfo(msg.sender, borrowers[msg.sender].ethAmount, borrowers[msg.sender].time,borrowers[msg.sender].borrowableAmount, borrowers[msg.sender].thresholdAmount,borrowers[msg.sender].borrowedAmount);
 
@@ -206,10 +204,10 @@ contract Lending {
         //Threshold check
         sCollateral memory collateral = borrowers[user];
         uint256 ethToUsdc = collateral.ethAmount * _oracle.getPrice(_ether) / 10 ** 18;
-        require(ethToUsdc <= collateral.thresholdAmount ,"Ether price is greater than the threshold");
+
+        require(ethToUsdc <= collateral.thresholdAmount ,"The price has not been reached");
         uint256 liquidatorBonus;
         uint256 liquidatorAmountEther;    
-
         // 75%  ~ 51% 이면 빌린양의 1/2 까지만 상환 가능
         if(ethToUsdc > collateral.limitThresholdAmount) {
             require(collateral.borrowedAmount <= amount * 2, "The amount that can be repaid has been exceeded");
@@ -228,16 +226,17 @@ contract Lending {
             
 
         }
-        //  50% 아래 면 45% 까지 상환 가능(5%는 수수료)
         else {
+             //  50% 아래 면 45% 이상 상환 하면 바로 청산(5%는 수수료)
             if( amount >= (collateral.limitThresholdAmount*2) * 450 / 1000 ) {
                 liquidatorAmountEther = collateral.ethAmount;
                 delete borrowers[user];
             }
             else {
                 liquidatorAmountEther = amount * 10 ** 18 /_oracle.getPrice(_ether);
-                liquidatorBonus = liquidatorAmountEther * _bonus / _BASE_POINT;
+                liquidatorBonus = liquidatorAmountEther * _bonus /_BASE_POINT;
                 liquidatorAmountEther += liquidatorBonus;
+
                 collateral.ethAmount -= liquidatorAmountEther;
                 collateral.borrowedAmount -= amount;
                 collateral.time = block.timestamp;
@@ -255,7 +254,6 @@ contract Lending {
 
         {
         sCollateral memory borrower = borrowers[user];
-        console.log(borrower.ethAmount);
         emit BorrowerInfo(user, borrower.ethAmount, borrower.time,borrower.borrowableAmount, borrower.thresholdAmount,borrower.borrowedAmount);
         }
         
