@@ -12,7 +12,7 @@
   },
   "files": {
     "lib/forge-std/lib/ds-test/src/test.sol": {
-      "lastModificationDate": 1664530639042,
+      "lastModificationDate": 1665056744689,
       "contentHash": "962996f0e05d5218857a538a62d7c47e",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
@@ -46,12 +46,12 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "DSTest": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "test.sol/DSTest.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "test.sol/DSTest.json"
         }
       }
     },
     "lib/forge-std/src/Script.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "571dde8775a6214a03d6772ee330ead5",
       "sourceName": "lib/forge-std/src/Script.sol",
       "solcConfig": {
@@ -90,12 +90,12 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "Script": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Script.sol/Script.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Script.sol/Script.json"
         }
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "75c782f20a301ab9827060a03da071e4",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
@@ -131,12 +131,12 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "stdJson": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "StdJson.sol/stdJson.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "StdJson.sol/stdJson.json"
         }
       }
     },
     "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "6cab65c53a9548c2428a10697fd06dd1",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
@@ -177,21 +177,21 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "Test": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Test.sol/Test.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Test.sol/Test.json"
         },
         "stdError": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Test.sol/stdError.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Test.sol/stdError.json"
         },
         "stdMath": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Test.sol/stdMath.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Test.sol/stdMath.json"
         },
         "stdStorage": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Test.sol/stdStorage.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Test.sol/stdStorage.json"
         }
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "4393052cda7a471a4a7408d69b3e84b1",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
@@ -225,12 +225,12 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "Vm": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Vm.sol/Vm.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Vm.sol/Vm.json"
         }
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
@@ -264,12 +264,12 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "console.sol/console.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "console.sol/console.json"
         }
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1664530638422,
+      "lastModificationDate": 1665056744689,
       "contentHash": "5df91f8e93efbfcccf68973dc1b74a70",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
@@ -303,12 +303,12 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console2": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "console2.sol/console2.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "console2.sol/console2.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1664538385132,
+      "lastModificationDate": 1665056744689,
       "contentHash": "92cc1aad41bdb18ca20f6e03f461de7d",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -346,12 +346,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "ERC20": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "ERC20.sol/ERC20.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "ERC20.sol/ERC20.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1664538385132,
+      "lastModificationDate": 1665056744689,
       "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -385,12 +385,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "IERC20": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "IERC20.sol/IERC20.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "IERC20.sol/IERC20.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1664538385132,
+      "lastModificationDate": 1665056744689,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -426,12 +426,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "IERC20Metadata": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "IERC20Metadata.sol/IERC20Metadata.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "IERC20Metadata.sol/IERC20Metadata.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-IERC20Permit.sol": {
-      "lastModificationDate": 1664538385132,
+      "lastModificationDate": 1665056744689,
       "contentHash": "fb77f144244b9ab12533aa6ce85ef8c5",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
       "solcConfig": {
@@ -465,12 +465,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "IERC20Permit": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "draft-IERC20Permit.sol/IERC20Permit.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "draft-IERC20Permit.sol/IERC20Permit.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": {
-      "lastModificationDate": 1664538385132,
+      "lastModificationDate": 1665056744689,
       "contentHash": "3a843b05b85a270e9455e3d2e804e633",
       "sourceName": "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
       "solcConfig": {
@@ -508,12 +508,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "SafeERC20": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "SafeERC20.sol/SafeERC20.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "SafeERC20.sol/SafeERC20.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/Address.sol": {
-      "lastModificationDate": 1664538385142,
+      "lastModificationDate": 1665056744689,
       "contentHash": "1ded8fed2186fa6599c2aeb962009262",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Address.sol",
       "solcConfig": {
@@ -547,12 +547,12 @@
       "versionRequirement": "^0.8.1",
       "artifacts": {
         "Address": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Address.sol/Address.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Address.sol/Address.json"
         }
       }
     },
     "lib/openzeppelin-contracts/contracts/utils/Context.sol": {
-      "lastModificationDate": 1664538385142,
+      "lastModificationDate": 1665056744689,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "lib/openzeppelin-contracts/contracts/utils/Context.sol",
       "solcConfig": {
@@ -586,12 +586,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "Context": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Context.sol/Context.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Context.sol/Context.json"
         }
       }
     },
     "script/Counter.s.sol": {
-      "lastModificationDate": 1664530636972,
+      "lastModificationDate": 1665056744749,
       "contentHash": "0705c52104730a78aef4aa6694175c81",
       "sourceName": "script/Counter.s.sol",
       "solcConfig": {
@@ -631,53 +631,14 @@
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "CounterScript": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Counter.s.sol/CounterScript.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Counter.s.sol/CounterScript.json"
         }
       }
     },
-    "src/DreamOracle.sol": {
-      "lastModificationDate": 1664539790982,
-      "contentHash": "58bb7d8718b82b5f48aa9b1e7f8651f9",
-      "sourceName": "src/DreamOracle.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs"
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "^0.8.13",
-      "artifacts": {
-        "DreamOracle": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "DreamOracle.sol/DreamOracle.json"
-        }
-      }
-    },
-    "src/Lending.sol": {
-      "lastModificationDate": 1665129401035,
-      "contentHash": "d69affd438e51b0bff9c024d3571d852",
-      "sourceName": "src/Lending.sol",
+    "src/DreamAcademyLending.sol": {
+      "lastModificationDate": 1666267834851,
+      "contentHash": "c171fde4715ec3ed07ad3ad2a79b591d",
+      "sourceName": "src/DreamAcademyLending.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -721,14 +682,56 @@
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
-        "Lending": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Lending.sol/Lending.json"
+        "DreamAcademyLending": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/DreamAcademyLending.json"
+        }
+      }
+    },
+    "src/DreamOracle.sol": {
+      "lastModificationDate": 1666266270561,
+      "contentHash": "bb7d9f617b5436ef45edeb6aff868b49",
+      "sourceName": "src/DreamOracle.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs"
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "DreamOracle": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamOracle.sol/DreamOracle.json"
+        },
+        "IPriceOracle": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamOracle.sol/IPriceOracle.json"
         }
       }
     },
     "test/Lending.t.sol": {
-      "lastModificationDate": 1665129408825,
-      "contentHash": "2c34d579d3b7be33628d6821e5f4655b",
+      "lastModificationDate": 1666267532841,
+      "contentHash": "c80db538d0368f14c8965a0da90ac338",
       "sourceName": "test/Lending.t.sol",
       "solcConfig": {
         "settings": {
@@ -772,16 +775,16 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "src/DreamOracle.sol",
-        "src/Lending.sol"
+        "src/DreamAcademyLending.sol",
+        "src/DreamOracle.sol"
       ],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": "=0.8.13",
       "artifacts": {
-        "CounterTest": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Lending.t.sol/CounterTest.json"
+        "CUSDC": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Lending.t.sol/CUSDC.json"
         },
-        "USDC": {
-          "0.8.16+commit.07a7930e.Linux.gcc": "Lending.t.sol/USDC.json"
+        "Testx": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Lending.t.sol/Testx.json"
         }
       }
     }
