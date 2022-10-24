@@ -635,10 +635,10 @@
         }
       }
     },
-    "src/DreamAcademyLending.sol": {
-      "lastModificationDate": 1666267834851,
-      "contentHash": "c171fde4715ec3ed07ad3ad2a79b591d",
-      "sourceName": "src/DreamAcademyLending.sol",
+    "src/Compound.sol": {
+      "lastModificationDate": 1666601396093,
+      "contentHash": "54963e8e42902986dfdde5608ba4ea23",
+      "sourceName": "src/Compound.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -674,13 +674,60 @@
         "lib/forge-std/src/Vm.sol",
         "lib/forge-std/src/console.sol",
         "lib/forge-std/src/console2.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
-        "src/DreamOracle.sol"
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol"
       ],
       "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "DreamAcademyLending": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/DreamAcademyLending.json"
+        },
+        "IPriceOracle": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/IPriceOracle.json"
+        },
+        "LPToken": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/LPToken.json"
+        }
+      }
+    },
+    "src/DreamAcademyLending.sol": {
+      "lastModificationDate": 1666412284501,
+      "contentHash": "887e758e27137be2469c26699403101c",
+      "sourceName": "src/DreamAcademyLending.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs"
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
       "artifacts": {
         "DreamAcademyLending": {
           "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/DreamAcademyLending.json"
@@ -688,8 +735,8 @@
       }
     },
     "src/DreamOracle.sol": {
-      "lastModificationDate": 1666266270561,
-      "contentHash": "bb7d9f617b5436ef45edeb6aff868b49",
+      "lastModificationDate": 1666412287021,
+      "contentHash": "3e3e4fd8b2f9fc1c318979930a1ac006",
       "sourceName": "src/DreamOracle.sol",
       "solcConfig": {
         "settings": {
@@ -719,19 +766,16 @@
         }
       },
       "imports": [],
-      "versionRequirement": "^0.8.13",
+      "versionRequirement": null,
       "artifacts": {
         "DreamOracle": {
           "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamOracle.sol/DreamOracle.json"
-        },
-        "IPriceOracle": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamOracle.sol/IPriceOracle.json"
         }
       }
     },
     "test/Lending.t.sol": {
-      "lastModificationDate": 1666267532841,
-      "contentHash": "c80db538d0368f14c8965a0da90ac338",
+      "lastModificationDate": 1666591482293,
+      "contentHash": "92a37790cb12fd9b0177faa9e9ab7361",
       "sourceName": "test/Lending.t.sol",
       "solcConfig": {
         "settings": {
@@ -775,13 +819,15 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "src/DreamAcademyLending.sol",
-        "src/DreamOracle.sol"
+        "src/Compound.sol"
       ],
       "versionRequirement": "=0.8.13",
       "artifacts": {
         "CUSDC": {
           "0.8.13+commit.abaa5c0e.Linux.gcc": "Lending.t.sol/CUSDC.json"
+        },
+        "DreamOracle": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Lending.t.sol/DreamOracle.json"
         },
         "Testx": {
           "0.8.13+commit.abaa5c0e.Linux.gcc": "Lending.t.sol/Testx.json"

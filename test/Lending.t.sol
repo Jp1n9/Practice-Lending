@@ -4,7 +4,7 @@ pragma solidity 0.8.13;
 import "forge-std/Test.sol";
 
 import {ERC20} from "openzeppelin-contracts/token/ERC20/ERC20.sol";
-import "src/DreamAcademyLending.sol";
+import "src/Compound.sol";
 
 contract CUSDC is ERC20 {
     constructor() ERC20("Circle Stable Coin", "USDC") {
@@ -12,24 +12,24 @@ contract CUSDC is ERC20 {
     }
 }
 
-// contract DreamOracle {
-//     address public operator;
-//     mapping(address => uint256) prices;
+contract DreamOracle {
+    address public operator;
+    mapping(address => uint256) prices;
 
-//     constructor() {
-//         operator = msg.sender;
-//     }
+    constructor() {
+        operator = msg.sender;
+    }
 
-//     function getPrice(address token) external view returns (uint256) {
-//         require(prices[token] != 0, "the price cannot be zero");
-//         return prices[token];
-//     }
+    function getPrice(address token) external view returns (uint256) {
+        require(prices[token] != 0, "the price cannot be zero");
+        return prices[token];
+    }
 
-//     function setPrice(address token, uint256 price) external {
-//         require(msg.sender == operator, "only operator can set the price");
-//         prices[token] = price;
-//     }
-// }
+    function setPrice(address token, uint256 price) external {
+        require(msg.sender == operator, "only operator can set the price");
+        prices[token] = price;
+    }
+}
 
 contract Testx is Test {
     DreamOracle dreamOracle;
@@ -61,6 +61,7 @@ contract Testx is Test {
         dreamOracle.setPrice(address(usdc), 1 ether);
     }
 
+    // Done
     function testDepositEtherWithoutTxValueFails() external {
         (bool success,) = address(lending).call{value: 0 ether}(
             abi.encodeWithSelector(DreamAcademyLending.deposit.selector, address(0x0), 1 ether)
@@ -68,6 +69,7 @@ contract Testx is Test {
         assertFalse(success);
     }
 
+    //Done
     function testDepositEtherWithInsufficientValueFails() external {
         (bool success,) = address(lending).call{value: 2 ether}(
             abi.encodeWithSelector(DreamAcademyLending.deposit.selector, address(0x0), 3 ether)
@@ -177,6 +179,7 @@ contract Testx is Test {
 
     function testBorrowMultipleWithInsufficientCollateralFails() external {
         supplyUSDCDepositUser1();
+        // 1 ether deposit
         supplySmallEtherDepositUser2();
 
         dreamOracle.setPrice(address(0x0), 3000 ether);
@@ -433,6 +436,7 @@ contract Testx is Test {
 
     function testWithdrawYieldSucceeds() external {
         usdc.transfer(user3, 30000000 ether);
+
         vm.startPrank(user3);
         usdc.approve(address(lending), type(uint256).max);
         lending.deposit(address(usdc), 30000000 ether);
@@ -461,6 +465,7 @@ contract Testx is Test {
                 abi.encodeWithSelector(DreamAcademyLending.withdraw.selector, address(0x0), 1 ether)
             );
             assertFalse(success);
+
         }
         vm.stopPrank();
 
@@ -516,7 +521,6 @@ contract Testx is Test {
         vm.roll(block.number + (86400 * 1000 / 12));
         vm.prank(user3);
         assertTrue(lending.getAccruedSupplyAmount(address(usdc)) / 1e18 == 30000792);
-
         // other lender deposits USDC to our protocol.
         usdc.transfer(user4, 10000000 ether);
         vm.startPrank(user4);
@@ -527,13 +531,15 @@ contract Testx is Test {
         vm.roll(block.number + (86400 * 500 / 12));
         vm.prank(user3);
         uint256 a = lending.getAccruedSupplyAmount(address(usdc));
-
+        console.log("A",a);
         vm.prank(user4);
         uint256 b = lending.getAccruedSupplyAmount(address(usdc));
+        console.log("B",b);
 
         vm.prank(user1);
         uint256 c = lending.getAccruedSupplyAmount(address(usdc));
-
+        console.log("C",c);
+        console.log("A+B+C",(a + b + c) / 1e18 - 30000000 - 10000000 - 100000000);
         assertEq((a + b + c) / 1e18 - 30000000 - 10000000 - 100000000, 6956);
         assertEq(a / 1e18 - 30000000, 1547);
         assertEq(b / 1e18 - 10000000, 251);
