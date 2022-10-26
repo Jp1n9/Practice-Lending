@@ -635,10 +635,10 @@
         }
       }
     },
-    "src/Compound.sol": {
-      "lastModificationDate": 1666601396093,
-      "contentHash": "54963e8e42902986dfdde5608ba4ea23",
-      "sourceName": "src/Compound.sol",
+    "src/DreamAcademyLending.sol": {
+      "lastModificationDate": 1666759002157,
+      "contentHash": "dc51291a751a4fd1eb5c519cb7554f03",
+      "sourceName": "src/DreamAcademyLending.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -680,25 +680,27 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
-        "lib/openzeppelin-contracts/contracts/utils/Context.sol"
+        "lib/openzeppelin-contracts/contracts/utils/Context.sol",
+        "src/Math.sol",
+        "src/Quad.sol"
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "DreamAcademyLending": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/DreamAcademyLending.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/DreamAcademyLending.json"
         },
         "IPriceOracle": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/IPriceOracle.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/IPriceOracle.json"
         },
         "LPToken": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "Compound.sol/LPToken.json"
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/LPToken.json"
         }
       }
     },
-    "src/DreamAcademyLending.sol": {
-      "lastModificationDate": 1666412284501,
-      "contentHash": "887e758e27137be2469c26699403101c",
-      "sourceName": "src/DreamAcademyLending.sol",
+    "src/Math.sol": {
+      "lastModificationDate": 1666756480547,
+      "contentHash": "3cc96f494e3be6afedb225333de2ac83",
+      "sourceName": "src/Math.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -727,17 +729,17 @@
         }
       },
       "imports": [],
-      "versionRequirement": null,
+      "versionRequirement": "^0.8.0",
       "artifacts": {
-        "DreamAcademyLending": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamAcademyLending.sol/DreamAcademyLending.json"
+        "ABDKMath64x64": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Math.sol/ABDKMath64x64.json"
         }
       }
     },
-    "src/DreamOracle.sol": {
-      "lastModificationDate": 1666412287021,
-      "contentHash": "3e3e4fd8b2f9fc1c318979930a1ac006",
-      "sourceName": "src/DreamOracle.sol",
+    "src/Quad.sol": {
+      "lastModificationDate": 1666756499827,
+      "contentHash": "fcd64d94c08681c680394f4c8f3e49c2",
+      "sourceName": "src/Quad.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -766,16 +768,16 @@
         }
       },
       "imports": [],
-      "versionRequirement": null,
+      "versionRequirement": "^0.8.0",
       "artifacts": {
-        "DreamOracle": {
-          "0.8.13+commit.abaa5c0e.Linux.gcc": "DreamOracle.sol/DreamOracle.json"
+        "ABDKMathQuad": {
+          "0.8.13+commit.abaa5c0e.Linux.gcc": "Quad.sol/ABDKMathQuad.json"
         }
       }
     },
     "test/Lending.t.sol": {
-      "lastModificationDate": 1666591482293,
-      "contentHash": "92a37790cb12fd9b0177faa9e9ab7361",
+      "lastModificationDate": 1666759021657,
+      "contentHash": "cbbb83bf9cca4b1e906583b4f7216222",
       "sourceName": "test/Lending.t.sol",
       "solcConfig": {
         "settings": {
@@ -819,7 +821,9 @@
         "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
         "lib/openzeppelin-contracts/contracts/utils/Address.sol",
         "lib/openzeppelin-contracts/contracts/utils/Context.sol",
-        "src/Compound.sol"
+        "src/DreamAcademyLending.sol",
+        "src/Math.sol",
+        "src/Quad.sol"
       ],
       "versionRequirement": "=0.8.13",
       "artifacts": {

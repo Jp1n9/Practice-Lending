@@ -4,6 +4,8 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "openzeppelin-contracts/token/ERC20/utils/SafeERC20.sol";
 import {ERC20} from "openzeppelin-contracts/token/ERC20/ERC20.sol";
+import "./Math.sol";
+import "./Quad.sol";
 interface IPriceOracle {
     function getPrice(address) external view returns(uint256);
     function setPrice(address,uint256) external;
@@ -126,16 +128,18 @@ contract DreamAcademyLending {
 
 
     function calcInterest(uint256 aAmount , uint256 n) private returns(uint256) {
-        // // uint256 apy = (aAmount* 100000013882 ** n ) / (100000000000 ** n);
-        uint ret = aAmount;        
-        for(uint i=0;i<n; ++i) {
-            ret += ret / 100000000000 * 13882 ;
-        }
- 
+        // uint ret = aAmount;        
+        // for(uint i=0;i<n; ++i) {
+        //     ret += ret / 100000000000 * 13882 ;
+        // }
+        uint qout = n / 7200;
+        uint rem = n % 7200;
+        uint blockAPY =  interest(aAmount,1e15,1) / 7200 * rem;
+
+        uint ret = interest(aAmount,1e15,qout) + blockAPY;
         return ret;
 
     }
-
 
     function updateInterest(address sender , uint blockNum) private returns(uint256){
         sCollateral memory col = borrowers[sender];
@@ -200,5 +204,39 @@ contract DreamAcademyLending {
         payable(msg.sender).transfer(sBorrowedAmountInEther);
     }
 
+
+
+/*
+x : percent
+y : amount 
+z : 1000
+ */
+
+
+function pow (int128 x, uint n)
+private pure returns (int128 r) {
+  r = ABDKMath64x64.fromUInt (1);
+  while (n > 0) {
+    if (n % 2 == 1) {
+      r = ABDKMath64x64.mul (r, x);
+      n -= 1;
+    } else {
+      x = ABDKMath64x64.mul (x, x);
+      n /= 2;
+    }
+  }
+}
+function interest (uint principal, uint ratio, uint n)
+private pure returns (uint) {
+  return ABDKMath64x64.mulu (
+    pow (
+      ABDKMath64x64.add (
+        ABDKMath64x64.fromUInt (1), 
+        ABDKMath64x64.divu (
+          ratio,
+          10**18)),
+      n),
+    principal);
+}
 
 }
