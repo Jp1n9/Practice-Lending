@@ -134,9 +134,10 @@ contract DreamAcademyLending {
         // }
         uint qout = n / 7200;
         uint rem = n % 7200;
+        uint aAmount = qout > 0 ? interest(aAmount,1e15,qout) : aAmount;
         uint blockAPY =  interest(aAmount,1e15,1) / 7200 * rem;
 
-        uint ret = interest(aAmount,1e15,qout) + blockAPY;
+        uint ret = aAmount + blockAPY;
         return ret;
 
     }
